@@ -75,6 +75,12 @@ app.post('/recipes', jsonParser, (req, res) => {
 
 app.get('/recipes', (req, res) => {
   res.json(Recipes.get());
+});
+
+app.delete('/recipes/:id', (req, res) => {
+  Recipes.delete(req.params.id);
+  console.log(`Delete the recipe for: \`${req.params.id}\``);
+  res.status(204).end();
 })
 
 app.listen(process.env.PORT || 8080, () => {
